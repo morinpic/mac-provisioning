@@ -1,0 +1,122 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  sudo: no
+  vars:
+    homebrew_taps:
+      - caskroom/cask
+      - caskroom/versions
+      - homebrew/binary
+      - homebrew/dupes
+      - homebrew/versions
+
+    homebrew_packages:
+      - { name: ansible }
+      - { name: awscli }
+      - { name: curl }
+      - { name: go }
+      - { name: git }
+      - { name: heroku-toolbelt }
+      - { name: hub }
+      - { name: nodebrew }
+      - { name: openssl }
+      - { name: openssl, state: linked, install_options: force }
+      - { name: python }
+      - { name: rbenv }
+      - { name: ruby-build }
+      - { name: tree }
+      - { name: sshfs }
+      - { name: wget }
+      - { name: zsh, install_options: disable-etcdir }
+
+    homebrew_cask_packages:
+      - { name: android-studio }
+      - { name: appcleaner }
+      - { name: atom }
+      - { name: bee }
+      - { name: bettertouchtool }
+      - { name: cyberduck }
+      - { name: dropbox }
+      - { name: evernote }
+      - { name: firefox }
+      - { name: genymotion }
+      - { name: gyazo }
+      - { name: google-chrome }
+      - { name: google-drive }
+      - { name: google-japanese-ime }
+      - { name: handbrake }
+      - { name: hoster }
+      - { name: image-tool }
+      - { name: imagealpha }
+      - { name: imageoptim }
+      - { name: iterm2 }
+      - { name: java }
+      - { name: kobito }
+      - { name: licecap }
+      - { name: skype }
+      - { name: slack }
+      - { name: sourcetree }
+      - { name: sublime-text }
+      - { name: vagrant }
+      - { name: virtualbox }
+
+    npm_packages:
+      - { name: browser-sync }
+      - { name: grunt-cli }
+      - { name: gulp }
+      - { name: weinre }
+
+  tasks:
+    - name: homebrew の tap リポジトリを追加
+      homebrew_tap: tap={{ item }} state=present
+      with_items: homebrew_taps
+
+    - name: homebrew をアップデート
+      homebrew: update_homebrew=yes
+
+    # brew
+    - name: brew パッケージをインストール
+      homebrew: >
+        name={{ item.name }}
+        state={{ item.state | default('latest') }}
+        install_options={{
+          item.install_options | default() | join(',')
+          if item.install_options is not string
+          else item.install_options
+        }}
+      with_items: homebrew_packages
+      register: brew_result
+
+    - name: brew パッケージの情報保存先ディレクトリを作成
+      file: path=brew_info state=directory
+
+    - name: brew パッケージの情報を保存
+      shell: brew info {{ item }} > brew_info/{{ item }}
+      with_items: brew_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+
+    # cask
+    - name: homebrew-cask のインストール
+      homebrew: name=brew-cask state=latest
+
+    - name: cask パッケージをインストール
+      homebrew_cask: name={{ item.name }} state={{ item.state|default('installed') }}
+      with_items: homebrew_cask_packages
+      register: cask_result
+
+    - name: cask パッケージの情報保存先ディレクトリを作成
+      file: path=cask_info state=directory
+
+    - name: cask パッケージの情報を保存
+      shell: brew cask info {{ item }} > cask_info/{{ item }}
+      with_items: cask_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+
+    # oh-my-zsh
+    - name: oh-my-zsh のインストール
+      shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+      args:
+        creates: ~/.oh-my-zsh/
+
+    # npm
+    - name: node モジュールのインストール
+      npm: name={{ item.name }} global=yes state=present
+      with_items: npm_packages
