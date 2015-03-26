@@ -15,7 +15,6 @@ ansible-playbook -vv localhost.yml -i hosts
 
 ### -C, --check オプション
 Dry run実行となり実際にはローカル環境は変更されません。  
-初回以降のAnsible実行時に何が変更されるか確認する際に使用してください。
 ```
 ansible-playbook -C localhost.yml -i hosts
 ```
