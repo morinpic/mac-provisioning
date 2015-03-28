@@ -25,7 +25,6 @@
       - { name: rbenv }
       - { name: ruby-build }
       - { name: tree }
-      - { name: sshfs }
       - { name: wget }
       - { name: zsh, install_options: disable-etcdir }
 
