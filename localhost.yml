@@ -44,7 +44,6 @@
       - { name: google-drive }
       - { name: google-japanese-ime }
       - { name: handbrake }
-      - { name: hoster }
       - { name: image-tool }
       - { name: imagealpha }
       - { name: imageoptim }
@@ -114,6 +113,17 @@
       shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
       args:
         creates: ~/.oh-my-zsh/
+
+    - name: 現在使用されているシェルを確認
+      shell: echo $SHELL
+      register: check_shell
+      changed_when: false
+      always_run: yes
+
+    - name: デフォルトのShellをzshに変更する
+      shell: chsh -s /bin/zsh
+      always_run: yes
+      when: check_shell.stdout_lines.count("/bin/zsh") < 1
 
     # npm
     - name: node モジュールのインストール
