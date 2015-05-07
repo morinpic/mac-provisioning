@@ -22,6 +22,7 @@
       - { name: nodebrew }
       - { name: openssl }
       - { name: openssl, state: linked, install_options: force }
+      - { name: postgresql }
       - { name: python }
       - { name: rbenv }
       - { name: ruby-build }
