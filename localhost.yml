@@ -53,6 +53,8 @@
       - { name: java }
       - { name: kobito }
       - { name: licecap }
+      - { name: sketch-tool }
+      - { name: sketch-toolbox }
       - { name: skype }
       - { name: slack }
       - { name: sourcetree }
