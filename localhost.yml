@@ -58,6 +58,7 @@
       - { name: skype }
       - { name: slack }
       - { name: sourcetree }
+      - { name: sequel-pro }
       - { name: sublime-text }
       - { name: vagrant }
       - { name: virtualbox }
