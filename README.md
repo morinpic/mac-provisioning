@@ -5,8 +5,14 @@
 $./setup.sh
 ```
 
-### iterm2
+### iTerm2
 syncing configration file path
 ```
-Library/Preferences/com.googlecode.iterm2.plist
+~/Dropbox/Mackup/Library/Preferences/com.googlecode.iterm2.plist
+```
+
+### Alfred
+syncing configration file path
+```
+~/Dropbox/Mackup/Alfred.alfredpreferences
 ```
