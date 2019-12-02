@@ -8,13 +8,12 @@ $ ./setup.sh
 
 - Syncing configration file
   - iTerm2
-```
-~/Dropbox/Mackup/Library/Preferences/com.googlecode.iterm2.plist
-```
-
+  ```
+  ~/Dropbox/Mackup/Library/Preferences/com.googlecode.iterm2.plist
+  ```
   - Alfred
-```
-~/Dropbox/Mackup/Alfred.alfredpreferences
-```
+  ```
+  ~/Dropbox/Mackup/Alfred.alfredpreferences
+  ```
 
 - Reboot to mac
