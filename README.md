@@ -1,21 +1,20 @@
 # macbook-provisioning
 
 ## Setup
-- install application
+- Install application
 ```
 $ ./setup.sh
 ```
 
-- iTerm2
-syncing configration file path
+- Syncing configration file
+  - iTerm2
 ```
 ~/Dropbox/Mackup/Library/Preferences/com.googlecode.iterm2.plist
 ```
 
-- Alfred  
-syncing configration file path
+  - Alfred
 ```
 ~/Dropbox/Mackup/Alfred.alfredpreferences
 ```
 
-- Reboots for mac
+- Reboot to mac
