@@ -1,7 +1,9 @@
 #!/bin/sh
 
+# Command Line Toolsをインストール
 xcode-select --install
 
+# Homebrewのインストール
 if [ ! -x "`which brew`" ]; then
   echo "start install and update brew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -13,6 +15,10 @@ fi
 
 # brewfileを.brewfileとしてmackupで管理しているためmackupを先にインストールする
 brew install mackup
+brew install dropbox
+
+# AppStoreとDropboxへのログインを促す
+read -p "Please log in to Appstore & Dropbox!!"
 
 # mackupでリストアする
 mackup restore
@@ -20,8 +26,15 @@ mackup restore
 # Homebrew Packageのインストール
 brew bundle install --file=.brewfile
 
+# ==== システム環境設定 ====
 # Dockを自動的に隠す
 defaults write com.apple.dock autohide -bool true
+# カーソルの移動速度を変更 （1〜15）
+defaults write -g com.apple.trackpad.scaling -float 15
+# キーのリピート
+defaults write -g KeyRepeat -int 1
+# リピート入力認識までの時間
+defaults write -g InitialKeyRepeat -int 11
 # 隠しファイル/フォルダを表示
 defaults write com.apple.finder AppleShowAllFiles true
 # タイトルバーにフルパスを表示する
