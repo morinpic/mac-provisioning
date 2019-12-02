@@ -6,6 +6,10 @@
 $ ./setup.sh
 ```
 
+- Manual install
+  - Local by Flywheel  
+https://localbyflywheel.com/
+
 - Syncing configration file
   - iTerm2
   ```
@@ -15,5 +19,4 @@ $ ./setup.sh
   ```
   ~/Dropbox/Mackup/Alfred.alfredpreferences
   ```
-
 - Reboot to mac
