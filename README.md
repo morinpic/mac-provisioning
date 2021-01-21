@@ -12,10 +12,12 @@ https://localbyflywheel.com/
 
 - Syncing configration file
   - iTerm2
+  General > Preferences > Load preferences from a custom folder or URL
   ```
   ~/Dropbox/Mackup/Library/Preferences/com.googlecode.iterm2.plist
   ```
   - Alfred
+  Advanced > Syncing
   ```
   ~/Dropbox/Mackup/Alfred.alfredpreferences
   ```
