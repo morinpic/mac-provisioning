@@ -39,7 +39,7 @@ fi
 # brewfileを.brewfileとしてmackupで管理しているためmackupを先にインストールする
 brew install mackup
 # mackupのbackup先はドロップボックスなので先にインストールしておく
-brew cask install dropbox
+brew install dropbox
 
 # AppStoreとDropboxへのログインを促す
 read -p "Please log in to Appstore & Dropbox!!"
