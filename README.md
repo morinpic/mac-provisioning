@@ -21,4 +21,6 @@ https://localbyflywheel.com/
   ```
   ~/Dropbox/Mackup/Alfred.alfredpreferences
   ```
+    - Spotlight  
+    システム環境設定 > キーボード > Spotlight> Spotlight検索を表示 > Off
 - Reboot to mac
