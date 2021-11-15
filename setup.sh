@@ -28,10 +28,13 @@ echo "End system environment settings"
 # Command Line Toolsをインストール
 xcode-select --install
 
+
+
+
 # Homebrewのインストール
 if [ ! -x "`which brew`" ]; then
   echo "start install and update brew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew update
   brew upgrade
   brew cleanup
