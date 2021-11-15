@@ -28,9 +28,6 @@ echo "End system environment settings"
 # Command Line Toolsをインストール
 xcode-select --install
 
-
-
-
 # Homebrewのインストール
 if [ ! -x "`which brew`" ]; then
   echo "start install and update brew"
@@ -40,6 +37,10 @@ if [ ! -x "`which brew`" ]; then
   brew cleanup
   brew -v
 fi
+
+# M1対応
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # brewfileを.brewfileとしてmackupで管理しているためmackupを先にインストールする
 brew install mackup
