@@ -6,10 +6,6 @@
 $ ./setup.sh
 ```
 
-- Manual install
-  - Local by Flywheel  
-https://localbyflywheel.com/
-
 - Syncing configration file
   - iTerm2
   General > Preferences > Load preferences from a custom folder or URL
